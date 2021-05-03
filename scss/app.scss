@@ -1,0 +1,277 @@
+/*vamos a importar desde otro archivo scss las varibles es muy impo rtante el orden, en este caso primero se debe de utilizar las varibles*/
+@import "variables";
+@import "mixins";
+
+html {
+  /*esto permite que si agregamos un padding a algun contendor, no va cariar el ancho ni el largo de tal contenedor*/
+  @include box-sizing(border-box);
+}
+*,
+*:after,
+*:before {
+  @include box-sizing(inherit);
+}
+
+/*se coloca la fuente para toda la pagina*/
+body {
+  font-family: $fuente_principal;
+}
+
+/*se coloca la clase contenedor a todas las secciones para que tengan el mismo centrado y ancho maximo*/
+.contenedor {
+  max-width: 1100px;
+  width: 90%;
+  margin: 0 auto;
+}
+/*ocultamos el hero*/
+.oculto {
+  display: none;
+}
+//centrador
+.centrado {
+  text-align: center;
+}
+/*ahora comenzamos con los estilos del header*/
+.header {
+  display: flex;
+  /*separacion de los elementos */
+  justify-content: space-between;
+  /*alinea los elementos verticalmente*/
+  align-items: center;
+  /*damos padding arriba y abajo al logo, para que el header tenga un alto */
+  .logo {
+    padding: 1.4rem 0;
+    
+    #logo{
+      max-width: 180px;
+      
+    }
+  }
+  
+}
+.carrito-compras {
+  /*es siempre para el padre, para poner objetos flotantes*/
+  position: relative;
+  &:hover .contenido {
+    /*para poder ver lo que ocultamos, tenemos que utilizar :hover y asi se mostrara lo que esta en el carrito de compras*/
+    /*para que el hover este junto utilizamos &*/
+    background-color: $gris;
+    /*utlizamos disply block, para que que este en orden los datos*/
+    display: block;
+    /*para el hijo, para poder moverlo a gusto*/
+    position: absolute;
+    right: 0;
+    padding: 1rem;
+    max-width: 400px;
+    img {
+      max-width: 150px;
+    }
+    .boton {
+      @include boton($principal);
+    }
+  }
+}
+
+.hero {
+  /*le damos un altura determinada, que tendra como minimo 24rem*/
+  min-height: 24rem;
+  /*llamamos a la funcion de mixin*/
+  @include background-imagen("../img/hero3.jpg");
+  /*esto permite que la imagen se extienda*/
+  background-size: cover;
+  color: $blanco;
+  display: flex;
+  /*centra verticalmente*/
+  align-items: center;
+  .contenido-hero {
+    /*permite que nuestras cajas hija ocupen todo en ancho posible disponible*/
+    /*flex-grow: 1;*/
+    h2 {
+      /*para el ancho del texto, con 400 lo hacemos mas delgada la letra*/
+      font-weight: 400;
+      /*para hacerlo un poco mas grande la letra*/
+      font-size: 2.3rem;
+    }
+    p {
+      /*para hacerlo un poco mas grande la letra*/
+      font-size: 1.2rem;
+    }
+
+    form {
+      position: relative;
+
+      @include tablet() {
+        width: 40%;
+      }
+      input[type="submit"] {
+        /*con esto permite mover libre menete este boton*/
+        position: absolute;
+        right: 0;
+        top: 0;
+        @include background-imagen("../img/lupa.png");
+        width: 3rem;
+        height: 3rem;
+        /*covertimos la caja en bloque para eliminar el texto por defecto*/
+        display: block;
+        /*indendamos el texto por defecto y se colocara en horizontal -9999px negativos en direccion al lado izquierdo, de esa forma desaparecera*/
+        text-indent: -9999px;
+        /*quitamos el borde que viene por defecto*/
+        border: none;
+        /*agregamos la propieda de la manito, que aparecer cuando el mouse este ensima del boton*/
+        cursor: pointer;
+      }
+      input[type="text"] {
+        /*para que tenga el 100% de ancho de su contenedor*/
+        width: 100%;
+        /*le damos una altura a la caja*/
+        height: 3rem;
+      }
+    }
+  }
+}
+
+.barra {
+  /*como minimo tendra un 5rem de altura*/
+  min-height: 6rem;
+  /*le damos un paddig interno*/
+  padding: 1rem;
+  /*creamos un fondo con gradiente*/
+  /*background: linear-gradient(to right,$principal 25%, #6084e7 75%);*/
+  /*declaramos la gradiente*/
+  @include gradiente($principal, $terciario);
+  color: $blanco;
+  display: flex;
+  /*Para centrar verticalmente*/
+
+  .iconos {
+    display: flex;
+    flex-direction: column;
+    /*para que crescan en cada uno*/
+    flex: 1;
+    @include desktop() {
+      flex-direction: row;
+    }
+    .icono {
+      /*para que creascan y tomen el mismo espacio cada uno de ellos (los iconos)*/
+      flex: 1;
+      /*toma una posion en la x(5% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+      background-position: 5% center !important;
+      /*vamos a modificar la posicion de los iconos, cuando se hace en en tables y celular*/
+      @include tablet {
+        /*cambiamos la posicion de los iconos, que estan como fondo*/
+        /*toma una posion en la x(20% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+        background-position: 20% center !important;
+      }
+      @include desktop {
+        /*cambiamos la posicion de los iconos, que estan como fondo*/
+        /*toma una posion en la x(left lo deja en la posicon 0% a la derecha osea (se queda en lo mazimo de la izquierda )) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+        background-position: left center !important;
+      }
+      background-size: 2.4rem;
+      /*centramos el parrafo, en este caso lo centromos con text-align, ya que, si utilizamos flex, y justiface content, se centra pero como caja y pero mas estetico esta con text-align: center;*/
+      text-align: center;
+      &.icono1 {
+        /*llamamos a la funcion de mixin*/
+        @include background-imagen("../img/icono1.png");
+      }
+      &.icono2 {
+        /*llamamos a la funcion de mixin*/
+        @include background-imagen("../img/icono2.png");
+      }
+      &.icono3 {
+        /*llamamos a la funcion de mixin*/
+        @include background-imagen("../img/icono3.png");
+      }
+    }
+  }
+}
+
+.cursos {
+  display: flex;
+
+  flex-wrap: wrap;
+  /*para dar espacion entre cajas es recomendame utilzar justify-content: space-between; ya que calcula para cualquier tamaño el espacion de separacion */
+  justify-content: space-between;
+  .curso {
+    height: 100%;
+    .imagen-curso {
+      /*para que la imagen ocupe todo el ancho disponible*/
+      width: 100%;
+    }
+
+    background-color: white;
+    flex: 0 1 calc(50% - 1rem);
+    /*daken(color,10)  es una propiedad de sass que permite oscurecer el color en 10 puntos*/
+    border: 1px solid darken($gris, 10);
+    margin-bottom: 2rem;
+    @include tablet() {
+      flex: 0 1 calc(33% - 1rem);
+    }
+    @include desktop() {
+      flex: 0 1 calc(25% - 1rem);
+    }
+  }
+}
+.info-curso {
+  padding: 1rem;
+  h4 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  .precio {
+    display: flex;
+    justify-content: space-between;
+    .regular {
+      /*permite tener una linea en el medio del texto*/
+      text-decoration: line-through;
+      color: red;
+    }
+    .oferta {
+      /*tamaño de la letra*/
+      font-size: 1.6rem;
+      /*ancho de la letra*/
+      font-weight: 700;
+      color: green;
+    }
+  }
+
+  .boton {
+    @include boton($principal);
+  }
+}
+
+.footer {
+  /*darken(color,10)  es una propiedad de sass que permite oscurecer el color en 10 puntos*/
+  border: 1px solid darken($gris, 10);
+  margin-top: 1rem;
+  padding-top: 2rem;
+
+  .contenedor-footer {
+    
+    /*como minimo tendra un 5rem de altura*/
+    min-height: 9rem;
+    display: flex;
+    flex-direction: column;
+    @include telefono() {
+      flex-direction: row;
+    }
+  }
+}
+
+
+.menu{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  flex: 1;
+
+  @include desktop(){
+    flex: 0 1 calc(30% - 1rem);
+  }
+
+  a{
+    color: $negro;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+  }
+}

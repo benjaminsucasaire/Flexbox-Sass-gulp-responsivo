@@ -1,0 +1,14 @@
+//una de las funciones de sass es poder utilizar variables en css, a continuacion de clararemos algunas variables.varibles colores
+$principal:#741d51;
+$secundario:#0c901e;
+$terciario:#e44e52;
+$blanco:#ffffff;
+$gris:#f2f2f2;
+$negro:#000000;
+//fuentes
+$fuente_principal:'Raleway', sans-serif;
+
+//variables para los tamaños de media queries
+$telefono:480px;
+$tablet:768px;
+$desktop:1024px;

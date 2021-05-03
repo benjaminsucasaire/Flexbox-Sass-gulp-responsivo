@@ -1,0 +1,394 @@
+@charset "UTF-8";
+/*vamos a importar desde otro archivo scss las varibles es muy impo rtante el orden, en este caso primero se debe de utilizar las varibles*/
+/*media Queries*/
+html {
+  /*esto permite que si agregamos un padding a algun contendor, no va cariar el ancho ni el largo de tal contenedor*/
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+/*se coloca la fuente para toda la pagina*/
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+/*se coloca la clase contenedor a todas las secciones para que tengan el mismo centrado y ancho maximo*/
+.contenedor {
+  max-width: 1100px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/*ocultamos el hero*/
+.oculto {
+  display: none;
+}
+
+.centrado {
+  text-align: center;
+}
+
+/*ahora comenzamos con los estilos del header*/
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*separacion de los elementos */
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  /*alinea los elementos verticalmente*/
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  /*damos padding arriba y abajo al logo, para que el header tenga un alto */
+}
+
+.header .logo {
+  padding: 1.4rem 0;
+}
+
+.header .logo #logo {
+  max-width: 180px;
+}
+
+.carrito-compras {
+  /*es siempre para el padre, para poner objetos flotantes*/
+  position: relative;
+}
+
+.carrito-compras:hover .contenido {
+  /*para poder ver lo que ocultamos, tenemos que utilizar :hover y asi se mostrara lo que esta en el carrito de compras*/
+  /*para que el hover este junto utilizamos &*/
+  background-color: #f2f2f2;
+  /*utlizamos disply block, para que que este en orden los datos*/
+  display: block;
+  /*para el hijo, para poder moverlo a gusto*/
+  position: absolute;
+  right: 0;
+  padding: 1rem;
+  max-width: 400px;
+}
+
+.carrito-compras:hover .contenido img {
+  max-width: 150px;
+}
+
+.carrito-compras:hover .contenido .boton {
+  background-color: #741d51;
+  padding: 0.8rem 1rem;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.hero {
+  /*le damos un altura determinada, que tendra como minimo 24rem*/
+  min-height: 24rem;
+  /*llamamos a la funcion de mixin*/
+  background-image: url("../img/hero3.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  /*esto permite que la imagen se extienda*/
+  background-size: cover;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*centra verticalmente*/
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.hero .contenido-hero {
+  /*permite que nuestras cajas hija ocupen todo en ancho posible disponible*/
+  /*flex-grow: 1;*/
+}
+
+.hero .contenido-hero h2 {
+  /*para el ancho del texto, con 400 lo hacemos mas delgada la letra*/
+  font-weight: 400;
+  /*para hacerlo un poco mas grande la letra*/
+  font-size: 2.3rem;
+}
+
+.hero .contenido-hero p {
+  /*para hacerlo un poco mas grande la letra*/
+  font-size: 1.2rem;
+}
+
+.hero .contenido-hero form {
+  position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero .contenido-hero form {
+    width: 40%;
+  }
+}
+
+.hero .contenido-hero form input[type="submit"] {
+  /*con esto permite mover libre menete este boton*/
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-image: url("../img/lupa.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 3rem;
+  height: 3rem;
+  /*covertimos la caja en bloque para eliminar el texto por defecto*/
+  display: block;
+  /*indendamos el texto por defecto y se colocara en horizontal -9999px negativos en direccion al lado izquierdo, de esa forma desaparecera*/
+  text-indent: -9999px;
+  /*quitamos el borde que viene por defecto*/
+  border: none;
+  /*agregamos la propieda de la manito, que aparecer cuando el mouse este ensima del boton*/
+  cursor: pointer;
+}
+
+.hero .contenido-hero form input[type="text"] {
+  /*para que tenga el 100% de ancho de su contenedor*/
+  width: 100%;
+  /*le damos una altura a la caja*/
+  height: 3rem;
+}
+
+.barra {
+  /*como minimo tendra un 5rem de altura*/
+  min-height: 6rem;
+  /*le damos un paddig interno*/
+  padding: 1rem;
+  /*creamos un fondo con gradiente*/
+  /*background: linear-gradient(to right,$principal 25%, #6084e7 75%);*/
+  /*declaramos la gradiente*/
+  background: linear-gradient(to right, #741d51 0%, #e44e52 100%);
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*Para centrar verticalmente*/
+}
+
+.barra .iconos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /*para que crescan en cada uno*/
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+@media only screen and (min-width: 1024px) {
+  .barra .iconos {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+.barra .iconos .icono {
+  /*para que creascan y tomen el mismo espacio cada uno de ellos (los iconos)*/
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  /*toma una posion en la x(5% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+  background-position: 5% center !important;
+  /*vamos a modificar la posicion de los iconos, cuando se hace en en tables y celular*/
+  background-size: 2.4rem;
+  /*centramos el parrafo, en este caso lo centromos con text-align, ya que, si utilizamos flex, y justiface content, se centra pero como caja y pero mas estetico esta con text-align: center;*/
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .barra .iconos .icono {
+    /*cambiamos la posicion de los iconos, que estan como fondo*/
+    /*toma una posion en la x(20% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+    background-position: 20% center !important;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .barra .iconos .icono {
+    /*cambiamos la posicion de los iconos, que estan como fondo*/
+    /*toma una posion en la x(left lo deja en la posicon 0% a la derecha osea (se queda en lo mazimo de la izquierda )) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+    background-position: left center !important;
+  }
+}
+
+.barra .iconos .icono.icono1 {
+  /*llamamos a la funcion de mixin*/
+  background-image: url("../img/icono1.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.barra .iconos .icono.icono2 {
+  /*llamamos a la funcion de mixin*/
+  background-image: url("../img/icono2.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.barra .iconos .icono.icono3 {
+  /*llamamos a la funcion de mixin*/
+  background-image: url("../img/icono3.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.cursos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  /*para dar espacion entre cajas es recomendame utilzar justify-content: space-between; ya que calcula para cualquier tamaño el espacion de separacion */
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.cursos .curso {
+  height: 100%;
+  background-color: white;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 calc(50% - 1rem);
+  flex: 0 1 calc(50% - 1rem);
+  /*daken(color,10)  es una propiedad de sass que permite oscurecer el color en 10 puntos*/
+  border: 1px solid #d9d9d9;
+  margin-bottom: 2rem;
+}
+
+.cursos .curso .imagen-curso {
+  /*para que la imagen ocupe todo el ancho disponible*/
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .cursos .curso {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 calc(33% - 1rem);
+    flex: 0 1 calc(33% - 1rem);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cursos .curso {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 calc(25% - 1rem);
+    flex: 0 1 calc(25% - 1rem);
+  }
+}
+
+.info-curso {
+  padding: 1rem;
+}
+
+.info-curso h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.info-curso .precio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.info-curso .precio .regular {
+  /*permite tener una linea en el medio del texto*/
+  text-decoration: line-through;
+  color: red;
+}
+
+.info-curso .precio .oferta {
+  /*tamaño de la letra*/
+  font-size: 1.6rem;
+  /*ancho de la letra*/
+  font-weight: 700;
+  color: green;
+}
+
+.info-curso .boton {
+  background-color: #741d51;
+  padding: 0.8rem 1rem;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.footer {
+  /*darken(color,10)  es una propiedad de sass que permite oscurecer el color en 10 puntos*/
+  border: 1px solid #d9d9d9;
+  margin-top: 1rem;
+  padding-top: 2rem;
+}
+
+.footer .contenedor-footer {
+  /*como minimo tendra un 5rem de altura*/
+  min-height: 9rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 480px) {
+  .footer .contenedor-footer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+@media only screen and (min-width: 1024px) {
+  .menu {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 calc(30% - 1rem);
+    flex: 0 1 calc(30% - 1rem);
+  }
+}
+
+.menu a {
+  color: #000000;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
