@@ -140,7 +140,7 @@ body {
   /*creamos un fondo con gradiente*/
   /*background: linear-gradient(to right,$principal 25%, #6084e7 75%);*/
   /*declaramos la gradiente*/
-  @include gradiente($principal, $terciario);
+  @include gradiente($azul, $amarrillo);
   color: $blanco;
   display: flex;
   /*Para centrar verticalmente*/
@@ -157,12 +157,26 @@ body {
       /*para que creascan y tomen el mismo espacio cada uno de ellos (los iconos)*/
       flex: 1;
       /*toma una posion en la x(5% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
-      background-position: 5% center !important;
+      background-position: 0% center !important;
       /*vamos a modificar la posicion de los iconos, cuando se hace en en tables y celular*/
+      @include telefonospeque {
+        /*cambiamos la posicion de los iconos, que estan como fondo*/
+        /*toma una posion en la x(20% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+        background-position: 0% center !important;
+        text-align: end;
+      }
+      @include telefono {
+        /*cambiamos la posicion de los iconos, que estan como fondo*/
+        /*toma una posion en la x(20% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+        background-position: 10% center !important;
+         /*centramos el parrafo, en este caso lo centromos con text-align, ya que, si utilizamos flex, y justiface content, se centra pero como caja y pero mas estetico esta con text-align: center;*/
+      text-align: center;
+      }
       @include tablet {
         /*cambiamos la posicion de los iconos, que estan como fondo*/
         /*toma una posion en la x(20% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
         background-position: 20% center !important;
+       
       }
       @include desktop {
         /*cambiamos la posicion de los iconos, que estan como fondo*/
@@ -170,8 +184,7 @@ body {
         background-position: left center !important;
       }
       background-size: 2.4rem;
-      /*centramos el parrafo, en este caso lo centromos con text-align, ya que, si utilizamos flex, y justiface content, se centra pero como caja y pero mas estetico esta con text-align: center;*/
-      text-align: center;
+      
       &.icono1 {
         /*llamamos a la funcion de mixin*/
         @include background-imagen("../img/icono1.png");
@@ -196,6 +209,7 @@ body {
   justify-content: space-between;
   .curso {
     height: 100%;
+    height: 450px;
     .imagen-curso {
       /*para que la imagen ocupe todo el ancho disponible*/
       width: 100%;
@@ -216,6 +230,7 @@ body {
 }
 .info-curso {
   padding: 1rem;
+ 
   h4 {
     margin: 0;
     font-size: 1.2rem;
@@ -238,7 +253,7 @@ body {
   }
 
   .boton {
-    @include boton($principal);
+    @include boton($azul);
   }
 }
 

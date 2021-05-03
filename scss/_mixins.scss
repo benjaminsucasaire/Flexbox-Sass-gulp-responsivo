@@ -27,6 +27,13 @@
 }
 
 /*media Queries*/
+
+@mixin telefonospeque {
+  @media only screen and (min-width:#{$telefonospeque}) {
+    //para que se ejecute tenemos que utizar
+    @content;
+  }
+}
 @mixin telefono {
   @media only screen and (min-width:#{$telefono}) {
     //para que se ejecute tenemos que utizar

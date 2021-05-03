@@ -170,7 +170,7 @@ body {
   /*creamos un fondo con gradiente*/
   /*background: linear-gradient(to right,$principal 25%, #6084e7 75%);*/
   /*declaramos la gradiente*/
-  background: linear-gradient(to right, #741d51 0%, #e44e52 100%);
+  background: linear-gradient(to right, #052F83 0%, #FFDE3E 100%);
   color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -207,11 +207,28 @@ body {
   -ms-flex: 1;
   flex: 1;
   /*toma una posion en la x(5% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
-  background-position: 5% center !important;
+  background-position: 0% center !important;
   /*vamos a modificar la posicion de los iconos, cuando se hace en en tables y celular*/
   background-size: 2.4rem;
-  /*centramos el parrafo, en este caso lo centromos con text-align, ya que, si utilizamos flex, y justiface content, se centra pero como caja y pero mas estetico esta con text-align: center;*/
-  text-align: center;
+}
+
+@media only screen and (min-width: 100px) {
+  .barra .iconos .icono {
+    /*cambiamos la posicion de los iconos, que estan como fondo*/
+    /*toma una posion en la x(20% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+    background-position: 0% center !important;
+    text-align: end;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .barra .iconos .icono {
+    /*cambiamos la posicion de los iconos, que estan como fondo*/
+    /*toma una posion en la x(20% a la derecha) y en la Y(centro), colo camos import, para que tome este valor sobre ensima de los que viene por defecto en  el mixin*/
+    background-position: 10% center !important;
+    /*centramos el parrafo, en este caso lo centromos con text-align, ya que, si utilizamos flex, y justiface content, se centra pero como caja y pero mas estetico esta con text-align: center;*/
+    text-align: center;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -265,6 +282,7 @@ body {
 
 .cursos .curso {
   height: 100%;
+  height: 450px;
   background-color: white;
   -webkit-box-flex: 0;
   -ms-flex: 0 1 calc(50% - 1rem);
@@ -328,7 +346,7 @@ body {
 }
 
 .info-curso .boton {
-  background-color: #741d51;
+  background-color: #052F83;
   padding: 0.8rem 1rem;
   display: block;
   text-align: center;
